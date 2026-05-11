@@ -1,0 +1,128 @@
+.as-widget {
+  position: fixed;
+  z-index: 2147483647;
+  display: grid;
+  gap: 8px;
+  width: min(340px, calc(100vw - 16px));
+  padding: 10px;
+  color: #111827;
+  background: color-mix(in srgb, canvas 94%, transparent);
+  border: 1px solid rgba(107, 114, 128, 0.24);
+  border-radius: 8px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.18);
+  font: 500 12px/1.4 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.as-widget--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.as-widget__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.as-widget__label {
+  color: #16a34a;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.as-widget__close {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  padding: 0;
+  color: #64748b;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.as-widget__close:hover {
+  color: #111827;
+  background: #f3f4f6;
+}
+
+.as-widget__close svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.as-widget__alias {
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font: 600 13px/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.as-widget__actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.as-widget__actions button[data-action] {
+  min-height: 30px;
+  color: #111827;
+  background: #f3f4f6;
+  border: 1px solid rgba(107, 114, 128, 0.25);
+  border-radius: 7px;
+  font: 700 12px/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.as-widget__actions button[data-action]:hover {
+  background: #dcfce7;
+  border-color: rgba(22, 163, 74, 0.34);
+}
+
+.as-widget button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+@media (prefers-color-scheme: dark) {
+  .as-widget {
+    color: #f8fafc;
+    background: rgba(17, 24, 39, 0.96);
+    border-color: rgba(148, 163, 184, 0.22);
+  }
+
+  .as-widget__actions button[data-action] {
+    color: #f8fafc;
+    background: #1f2937;
+    border-color: rgba(148, 163, 184, 0.24);
+  }
+
+  .as-widget__actions button[data-action]:hover {
+    background: #14532d;
+  }
+
+  .as-widget__close:hover {
+    color: #f8fafc;
+    background: #1f2937;
+  }
+}

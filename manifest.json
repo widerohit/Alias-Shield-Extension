@@ -1,0 +1,65 @@
+{
+  "manifest_version": 3,
+  "name": "AliasShield",
+  "version": "1.0.0",
+  "description": "Smart disposable email alias generator for signup forms.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "32": "assets/icon32.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "options_page": "settings/settings.html",
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+A"
+      },
+      "description": "Open AliasShield"
+    },
+    "copy-current-alias": {
+      "suggested_key": {
+        "default": "Alt+Shift+C"
+      },
+      "description": "Copy the current AliasShield alias"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "utils/domain.js",
+        "utils/generator.js",
+        "utils/storage.js",
+        "content/detector.js",
+        "content/widget.js",
+        "content/main.js"
+      ],
+      "css": ["styles/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/icon16.png", "assets/icon32.png", "assets/icon48.png", "assets/icon128.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

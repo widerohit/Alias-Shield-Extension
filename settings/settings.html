@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AliasShield Settings</title>
+    <link rel="stylesheet" href="../styles/popup.css">
+  </head>
+  <body class="settings-body">
+    <main class="settings-shell">
+      <header class="settings-hero compact-hero">
+        <div>
+          <span class="eyebrow">AliasShield</span>
+          <h1>Settings</h1>
+        </div>
+        <button id="themeToggle" class="icon-button" type="button" title="Toggle theme" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"></path>
+          </svg>
+        </button>
+      </header>
+
+      <section class="settings-grid">
+        <div class="settings-stack">
+          <section class="settings-card">
+            <div class="section-head">
+              <div>
+                <h2>Account</h2>
+                <p>Stored locally in Chrome.</p>
+              </div>
+            </div>
+            <label for="baseEmail">Base Gmail</label>
+            <input id="baseEmail" type="email" autocomplete="email" placeholder="name@gmail.com">
+            <p id="settingsStatus" class="status"></p>
+          </section>
+
+          <section class="settings-card">
+            <div class="section-head">
+              <div>
+                <h2>Behavior</h2>
+                <p>Signup-page behavior.</p>
+              </div>
+            </div>
+            <div class="toggle-list">
+              <label class="toggle-row">
+                <input id="autoFill" type="checkbox">
+                <span>
+                  <strong>Auto-fill signup forms</strong>
+                  <small>Insert aliases on detected signup forms.</small>
+                </span>
+              </label>
+              <label class="toggle-row">
+                <input id="showWidget" type="checkbox">
+                <span>
+                  <strong>Floating suggestion</strong>
+                  <small>Show copy and regenerate near inputs.</small>
+                </span>
+              </label>
+              <label class="toggle-row">
+                <input id="quickCopy" type="checkbox">
+                <span>
+                  <strong>Quick copy shortcut</strong>
+                  <small>Use Alt+Shift+C to copy the current alias.</small>
+                </span>
+              </label>
+            </div>
+          </section>
+
+          <section class="settings-card">
+            <div class="section-head">
+              <div>
+                <h2>Safety</h2>
+                <p>Disable on sensitive domains.</p>
+              </div>
+            </div>
+            <label for="blacklistInput">Blacklisted domains</label>
+            <textarea id="blacklistInput" rows="3" spellcheck="false" placeholder="accounts.google.com&#10;mail.google.com"></textarea>
+            <label for="retentionDays">Auto-remove aliases after days</label>
+            <input id="retentionDays" type="number" min="0" step="1" placeholder="0 keeps aliases forever">
+          </section>
+
+          <section class="settings-card">
+            <div class="section-head">
+              <div>
+                <h2>Backup</h2>
+                <p>Move settings and alias history between browsers.</p>
+              </div>
+            </div>
+            <div class="backup-actions">
+              <button id="exportBackup" type="button">Export JSON</button>
+              <button id="importBackup" type="button">Import JSON</button>
+              <input id="backupFile" type="file" accept="application/json,.json" hidden>
+            </div>
+          </section>
+        </div>
+
+        <aside class="settings-stack">
+          <section class="settings-card preview-card">
+            <div class="section-head">
+              <div>
+                <h2>Alias Format</h2>
+                <p>Pick a preset or edit directly.</p>
+              </div>
+            </div>
+
+            <label for="patternPreset">Format preset</label>
+            <select id="patternPreset">
+              <option value="{base}+{domain}+{YYYYMMDD}@{host}">Domain + date: name+exampledomain+YYYYMMDD</option>
+              <option value="{base}+{domain}+{YYMMDD}@{host}">Domain + short date: name+exampledomain+YYMMDD</option>
+              <option value="{base}+{domain}@{host}">Domain only: name+exampledomain</option>
+              <option value="{base}+{domain}+{timestamp}@{host}">Domain + timestamp: name+exampledomain+YYMMDDHHMMSS</option>
+              <option value="custom">Custom pattern</option>
+            </select>
+
+            <label for="patternInput">Alias pattern</label>
+            <input id="patternInput" type="text" spellcheck="false">
+
+            <div class="alias-preview">
+              <span>Preview</span>
+              <output id="patternPreview">name+exampledomain+20260511@gmail.com</output>
+            </div>
+          </section>
+
+          <section class="settings-card">
+            <div class="section-head">
+              <div>
+                <h2>Pattern Tokens</h2>
+                <p>Build custom combinations.</p>
+              </div>
+            </div>
+            <div class="token-help">
+              <p>Available tokens</p>
+              <code>{base}</code>
+              <code>{domain}</code>
+              <code>{YYYYMMDD}</code>
+              <code>{YYMMDD}</code>
+              <code>{YYYYMM}</code>
+              <code>{host}</code>
+              <code>{timestamp}</code>
+              <p>Examples</p>
+              <code>name+exampledomain+20260511@gmail.com</code>
+              <code>name+exampledomain@gmail.com</code>
+            </div>
+          </section>
+        </aside>
+      </section>
+
+      <footer class="settings-savebar">
+        <p id="saveIndicator">Changes are saved locally in this browser.</p>
+        <button id="saveSettings" type="button">Save all settings</button>
+      </footer>
+    </main>
+
+    <script src="../utils/domain.js"></script>
+    <script src="../utils/generator.js"></script>
+    <script src="../utils/storage.js"></script>
+    <script src="settings.js"></script>
+  </body>
+</html>
