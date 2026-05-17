@@ -7,10 +7,10 @@ AliasShield is a Manifest V3 Chrome extension that generates Gmail plus-address 
 AliasShield helps you create site-specific Gmail aliases such as:
 
 ```text
-johndoe+exampledomain+20260512@gmail.com
+yourname+exampledomain+20260512@gmail.com
 ```
 
-If your real Gmail is `johndoe@gmail.com`, messages sent to that alias still arrive in the same inbox. The extra alias text makes it easier to identify, search, filter, or block mail from a specific signup source.
+If your real Gmail is `yourname@gmail.com`, messages sent to that alias still arrive in the same inbox. The extra alias text makes it easier to identify, search, filter, or block mail from a specific signup source.
 
 ## Features
 
